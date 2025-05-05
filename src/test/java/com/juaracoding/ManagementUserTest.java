@@ -44,8 +44,7 @@ public class ManagementUserTest {
     @Then("I see message application error on the user page")
     public void i_see_message_application_error_on_the_user_page(){
         Utils.delay(2);
-        managementUserPage.checkNoClientSideError();
-//        Assert.assertEquals(managementUserPage.getTxtAppError(),"Masuk ke halaman user");
+        Assert.assertTrue(managementUserPage.getError().contains("masuk ke menu"));
         extentTest.log(LogStatus.PASS,"I see message application error on the user page");
     }
 }

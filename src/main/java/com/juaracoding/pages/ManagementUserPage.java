@@ -3,12 +3,9 @@ package com.juaracoding.pages;
 import com.juaracoding.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import static org.jsoup.helper.Validate.fail;
+import java.util.List;
 
 public class ManagementUserPage {
     private WebDriver driver;
@@ -78,15 +75,12 @@ public class ManagementUserPage {
     @FindBy(xpath = "//h2[contains(text(),'Application error')]")
     private WebElement txtAppError;
 
+    @FindBy(xpath = "errorName")
+    List<WebElement> errorMessages;
 
-    public void checkNoClientSideError() {
-        LogEntries logs = driver.manage().logs().get(LogType.BROWSER);
 
-        for (LogEntry entry : logs) {
-            if (entry.getMessage().contains("Application error: a client-side exception has occurred")) {
-                fail("Client-side error terdeteksi: " + entry.getMessage());
-            }
-        }
+    public List<WebElement> getError(){
+        return errorMessages;
     }
 
     public void setBtnManagement () {

@@ -141,7 +141,7 @@ public class ManagementUnitTest {
     public void i_see_message_Berhasil_Menambahkan_Unit(){
         Utils.delay(2);
         Assert.assertTrue(managementUnitPage.getErrorMessages().size() > 0 && managementUnitPage.getErrorMessages().get(0).isDisplayed(),
-                "BUG: Pesan error validasi tidak muncul padahal field mandatory kosong 'pilih unit kalender, lokasi absen tetap, aturan cuti");
+                "BUG: Pesan error validasi tidak muncul padahal field mandatory kosong 'pilih unit kalender, aturan cuti");
         System.out.println("Validasi field mandatory bekerja dengan benar (pesan error muncul)");
         extentTest.log(LogStatus.PASS,"I see message Berhasil Menambahkan Unit");
     }
@@ -209,7 +209,7 @@ public class ManagementUnitTest {
     }
     @And("I click button view on new shift")
     public void i_click_button_view_on_new_shift(){
-        Utils.delay(2);
+        Utils.delay(3);
         managementUnitPage.setBtnView();
         extentTest.log(LogStatus.PASS,"I click button view on new shift");
     }
@@ -303,7 +303,7 @@ public class ManagementUnitTest {
 
     @And("I click button save")
     public void i_click_button_save(){
-        Utils.delay(2);
+        Utils.delay(5);
         managementUnitPage.setAtur();
         extentTest.log(LogStatus.PASS,"I click button atur");
     }
@@ -344,7 +344,7 @@ public class ManagementUnitTest {
     }
     @And("I click button submit")
     public void i_click_button_submit(){
-        Utils.delay(1);
+        Utils.delay(3);
         managementUnitPage.setAtur();
         extentTest.log(LogStatus.PASS,"I click button submit");
     }
