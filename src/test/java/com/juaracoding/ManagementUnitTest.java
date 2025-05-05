@@ -81,7 +81,6 @@ public class ManagementUnitTest {
         String tableRowText = managementUnitPage.getTableRowText(1);
         System.out.println(tableRowText);
         Assert.assertNotNull(tableRowText,"The table displays all the data");
-//        Assert.assertEquals(managementUnitPage.getTxtTanggal(),"19 Nov 2024");
         extentTest.log(LogStatus.PASS,"I see all unit on page unit");
     }
 
@@ -210,7 +209,7 @@ public class ManagementUnitTest {
     }
     @And("I click button view on new shift")
     public void i_click_button_view_on_new_shift(){
-        Utils.delay(3);
+        Utils.delay(2);
         managementUnitPage.setBtnView();
         extentTest.log(LogStatus.PASS,"I click button view on new shift");
     }

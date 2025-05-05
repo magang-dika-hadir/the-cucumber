@@ -3,18 +3,19 @@ package com.juaracoding.pages;
 import com.juaracoding.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
-import java.util.NoSuchElementException;
+import static org.jsoup.helper.Validate.fail;
 
 public class ManagementUserPage {
     private WebDriver driver;
 
-    public ManagementUserPage(){
+    public ManagementUserPage() {
         this.driver = DriverSingleton.getDriver();
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//p[normalize-space()='Management']")
@@ -78,15 +79,25 @@ public class ManagementUserPage {
     private WebElement txtAppError;
 
 
-    public void setBtnManagement(){
+    public void checkNoClientSideError() {
+        LogEntries logs = driver.manage().logs().get(LogType.BROWSER);
+
+        for (LogEntry entry : logs) {
+            if (entry.getMessage().contains("Application error: a client-side exception has occurred")) {
+                fail("Client-side error terdeteksi: " + entry.getMessage());
+            }
+        }
+    }
+
+    public void setBtnManagement () {
         btnManagement.click();
     }
 
-    public void setBtnUser(){
+    public void setBtnUser () {
         btnUser.click();
     }
 
-    public String getTxtAppError(){
+    public String getTxtAppError () {
         return txtAppError.getText();
     }
 }
