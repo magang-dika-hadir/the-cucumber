@@ -120,8 +120,6 @@ public class ManagementPosition {
             String messageFromAttribute = null;
             if (Objects.equals(component, "positionName")) {
                 messageFromAttribute = namaPosisiInput.getAttribute("validationMessage");
-            } else if (Objects.equals(component, "position")) {
-                messageFromAttribute = message;
             }
 
             if (messageFromAttribute != null && !messageFromAttribute.isEmpty()) {

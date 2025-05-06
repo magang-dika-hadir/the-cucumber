@@ -217,7 +217,7 @@ public class ManagementAddUser {
             } else if (Objects.equals(component, "workSchedule")) {
                 messageFromAttribute = workSchedule.getAttribute("validationMessage");
             } else if (Objects.equals(component, "selfie")) {
-                messageFromAttribute = message;
+                messageFromAttribute = selfieRequirement.getAttribute("validationMessage");
 //                messageFromAttribute = selfieRequirement.getAttribute("validationMessage");
             }
 
