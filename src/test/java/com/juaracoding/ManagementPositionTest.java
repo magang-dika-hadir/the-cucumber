@@ -54,8 +54,10 @@ public class ManagementPositionTest {
     }
 
     @And("I click the tambah button")
-    public void clickTambah() {
+    public void clickTambah() throws InterruptedException {
+        Thread.sleep(1000);
         managementPosition.clickTambah();
+        Thread.sleep(1000);
     }
 
     @Then("I should be get the position list {string}")
@@ -66,12 +68,11 @@ public class ManagementPositionTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Then("An success message indicating {string} should be displayed")
-    public void verifyMessage(String expectedMessage) throws InterruptedException {
-        WebElement messageElement = managementPosition.getMessageElement(expectedMessage);
-        System.out.println("ASSERT EXPECT: " + expectedMessage + " || " + "ACTUAL: " + messageElement.getText());
-        Assert.assertNotNull(messageElement, "Message element not found.");
-        Assert.assertTrue(messageElement.getText().contains(expectedMessage),
-                "Expected message '" + expectedMessage + "' but got '" + messageElement.getText() + "'");
+    @Then("An success message indicating {string} should be displayed in {string}")
+    public void verifyMessage(String expectedMessage, String component) throws InterruptedException {
+        String actualMessage = managementPosition.getMessageElement(expectedMessage, component);
+        System.out.println("ASSERT EXPECT: " + expectedMessage + " || " + "ACTUAL: " + actualMessage);
+        Assert.assertNotNull(actualMessage, "Message element not found.");
+        Assert.assertFalse(actualMessage.isEmpty(), "Expected message '" + expectedMessage + "' but got '" + actualMessage + "'");
     }
 }

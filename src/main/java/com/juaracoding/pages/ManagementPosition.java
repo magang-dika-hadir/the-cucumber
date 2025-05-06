@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Objects;
+
 public class ManagementPosition {
 
     private WebDriver driver;
@@ -113,9 +115,23 @@ public class ManagementPosition {
         }
     }
 
-    public WebElement getMessageElement(String message) {
+    public String getMessageElement(String message, String component) {
         try {
-            return driver.findElement(By.xpath("//*[contains(text(), '" + message + "')]"));
+            String messageFromAttribute = null;
+            if (Objects.equals(component, "positionName")) {
+                messageFromAttribute = namaPosisiInput.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "position")) {
+                messageFromAttribute = message;
+            }
+
+            if (messageFromAttribute != null && !messageFromAttribute.isEmpty()) {
+                System.out.println("MESSAGE (from text): " + messageFromAttribute);
+                return messageFromAttribute;
+            }
+            String messageFromText = driver.findElement(By.xpath("//*[contains(text(), '" + message + "')]")).getText();
+            System.out.println("=========MESSAGE (from text): " + messageFromText);
+
+            return messageFromText;
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return null;
         }

@@ -13,7 +13,7 @@ Feature: Management Position
       | Nama Position      | Nama Departement |
       | Manager            | Juara Coding     |
     And I click the tambah button
-    Then An success message indicating "Berhasil Menambahkan Position" should be displayed
+    Then An success message indicating "Berhasil Menambahkan Position" should be displayed in "position"
 #21
   Scenario: Adding position without fill Nama Position
     Given I navigate to the posisi page
@@ -22,6 +22,6 @@ Feature: Management Position
       | Nama Position      | Nama Departement |
       |                    | Juara Coding     |
     And I click the tambah button
-    Then An success message indicating "Please fill out this field." should be displayed
+    Then An success message indicating "Please fill out this field." should be displayed in "positionName"
 
 

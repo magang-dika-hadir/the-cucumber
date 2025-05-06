@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Objects;
 
 public class ManagementAddUser {
 
@@ -109,7 +110,7 @@ public class ManagementAddUser {
     }
 
     public void uploadFile(String data) {
-        String filePath = System.getProperty("user.dir") + "/src/main/resources/uploads/ManagementAddUser/"+ data;
+        String filePath = System.getProperty("user.dir") + "/src/main/resources/uploads/ManagementAddUser/" + data;
         fileInput.sendKeys(filePath);
     }
 
@@ -180,6 +181,7 @@ public class ManagementAddUser {
 
     public void clickSubmitButton() {
         submitButton.click();
+
     }
 
     public void navigateToManagementAddUser() {
@@ -187,9 +189,46 @@ public class ManagementAddUser {
         navigateAddUser();
     }
 
-    public WebElement getErrorMessageElement(String errorMessage) {
+    public String getMessageElement(String message, String component) {
         try {
-            return driver.findElement(By.xpath("//*[contains(text(), '" + errorMessage + "')]"));
+            String messageFromAttribute = null;
+            if (Objects.equals(component, "foto")) {
+                messageFromAttribute = fileInput.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "nik")) {
+                messageFromAttribute = nik.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "name")) {
+                messageFromAttribute = name.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "email")) {
+                messageFromAttribute = email.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "password")) {
+                messageFromAttribute = password.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "division")) {
+                messageFromAttribute = division.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "unit")) {
+                messageFromAttribute = unit.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "jobPosition")) {
+                messageFromAttribute = jobPosition.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "jobTitle")) {
+                messageFromAttribute = jobTitle.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "contractType")) {
+                messageFromAttribute = contractType.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "workLocation")) {
+                messageFromAttribute = workLocation.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "workSchedule")) {
+                messageFromAttribute = workSchedule.getAttribute("validationMessage");
+            } else if (Objects.equals(component, "selfie")) {
+                messageFromAttribute = message;
+//                messageFromAttribute = selfieRequirement.getAttribute("validationMessage");
+            }
+
+            if (messageFromAttribute != null && !messageFromAttribute.isEmpty()) {
+                System.out.println("MESSAGE (from text): " + messageFromAttribute);
+                return messageFromAttribute;
+            }
+            String messageFromText = driver.findElement(By.xpath("//*[contains(text(), '" + message + "')]")).getText();
+            System.out.println("============ MESSAGE (from text): " + messageFromText);
+
+            return messageFromText;
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return null;
         }

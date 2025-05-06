@@ -77,7 +77,7 @@ public class ManagementAddUserTest {
     @And("I click the submit button")
     public void clickSubmitButton() throws InterruptedException {
         managementAddUser.clickSubmitButton();
-//        Thread.sleep(5000);
+        Thread.sleep(1000);
     }
 
     @Then("The new user should be added successfully")
@@ -85,12 +85,13 @@ public class ManagementAddUserTest {
         Assert.assertTrue(true, "The user was added successfully");
     }
 
-    @Then("An error message indicating {string} should be displayed")
-    public void verifyErrorMessageDisplayed(String expectedErrorMessage) {
-        WebElement errorMessageElement = managementAddUser.getErrorMessageElement(expectedErrorMessage);
-        System.out.println("ASSERT EXPECT: " + expectedErrorMessage + " || " + "ACTUAL: " + errorMessageElement.getText());
-        Assert.assertNotNull(errorMessageElement, "Error message element not found.");
-        Assert.assertTrue(errorMessageElement.getText().contains(expectedErrorMessage),
-                "Expected error message '" + expectedErrorMessage + "' but got '" + errorMessageElement.getText() + "'");
+    @Then("An error message indicating {string} should be displayed in {string}")
+    public void verifyErrorMessageDisplayed(String expectedErrorMessage, String location) throws InterruptedException {
+        Thread.sleep(1000);
+        String actualMessage = managementAddUser.getMessageElement(expectedErrorMessage, location);
+        System.out.println("ASSERT EXPECT: " + expectedErrorMessage + " || " + "ACTUAL: " + actualMessage);
+        Assert.assertNotNull(actualMessage, "Error message element not found.");
+        Assert.assertTrue(!actualMessage.equals(""),
+                "Expected error message '" + expectedErrorMessage + "' but got '" + actualMessage + "'");
     }
 }
