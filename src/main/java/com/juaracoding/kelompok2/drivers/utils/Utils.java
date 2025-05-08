@@ -2,11 +2,14 @@ package com.juaracoding.kelompok2.drivers.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -155,9 +158,7 @@ public class Utils {
         }
     }
 
-    /**
-     * Mengambil teks dari elemen (langsung).
-     */
+
     public static String getElementText(WebElement element) {
         try {
             return element.getText().trim();
@@ -167,9 +168,7 @@ public class Utils {
         }
     }
 
-    /**
-     * Mengambil teks dari elemen berdasarkan locator.
-     */
+
     public static String getText(WebDriver driver, By locator) {
         try {
             WebElement element = waitUntilVisible(driver, locator);
@@ -180,9 +179,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Mengecek apakah teks tertentu muncul pada elemen.
-     */
     public static boolean isTextPresent(WebDriver driver, By locator, String expectedText) {
         String actualText = getText(driver, locator);
         return actualText.contains(expectedText);
@@ -202,4 +198,20 @@ public class Utils {
         return extent;
     }
 
+    public static String takeScreenshot(WebDriver driver, String scenarioName) {
+        try {
+
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+            String fileName = "target/screenshots/" + scenarioName + "_" + timestamp + ".png";
+            File destFile = new File(fileName);
+            FileUtils.copyFile(srcFile, destFile);
+            return destFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
+
+

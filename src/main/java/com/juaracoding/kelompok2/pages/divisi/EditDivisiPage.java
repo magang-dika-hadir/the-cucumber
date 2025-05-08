@@ -48,7 +48,7 @@ public class EditDivisiPage {
         PageFactory.initElements(driver, this);
     }
 
-    // === Actions ===
+
 
 
     public void clickThreeDotButton(String divisiName) {
@@ -73,7 +73,7 @@ public class EditDivisiPage {
         Utils.clickElement(driver, batalButton);
     }
 
-    // === Validations ===
+
 
     public boolean isWarningEmptyEditDisplayed() {
         return Utils.isElementVisible(driver, By.id("warningEmptyEdite"));
