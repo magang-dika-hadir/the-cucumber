@@ -4,7 +4,7 @@
         <theme>standard</theme>
         <encoding>UTF-8</encoding>
         <documentTitle>Extent Report - Kelompok 2</documentTitle>
-        <reportName>Pengujian SauceDemo</reportName>
+        <reportName>Pengujian Hadir</reportName>
         <timestampFormat>dd MMMM yyyy, HH:mm:ss</timestampFormat>
         <maxLogSize>5MB</maxLogSize>
     </configuration>
