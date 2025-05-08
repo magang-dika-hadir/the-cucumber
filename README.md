@@ -1,10 +1,7 @@
 # Automation Testing HADIR WEB
 
-```bash
-
 Automation testing final project [HADIR WEB](https://magang.dikahadir.com/authentication/login) using **Intellij IDEA**, **Maven**, **Java**, **Selenium WebDriver**, **Cucumber BDD**, **TestNG** and **ExtentReports**.
 
-```
 ---
 
 ## ♻️ How to Run the Project
