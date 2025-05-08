@@ -11,7 +11,13 @@ Clone this repository to your local machine:
 
 ```bash
 
-git clone https://github.com/permadigeofani/magang-dika-hadir-permadigeofani.git
+git clone
+
+https://github.com/magang-dika-hadir/AppsHadirCucumber
+
+https://github.com/permadigeofani/magang-dika-hadir-permadigeofani.git
+
+https://github.com/magang-dika-hadir
 
 ```
 
