@@ -9,18 +9,6 @@ Automation testing final project [HADIR WEB](https://magang.dikahadir.com/authen
 ### 1. Clone the Repository
 Clone this repository to your local machine:
 
-```bash
-
-git clone
-
-https://github.com/magang-dika-hadir/AppsHadirCucumber
-
-https://github.com/permadigeofani/magang-dika-hadir-permadigeofani.git
-
-https://github.com/magang-dika-hadir
-
-```
-
 ---
 
 ### 2. Run the Tests
