@@ -1,11 +1,10 @@
-
-## Final Project of SQA Automation Coding batch 21
-This is the Final Project of SQA Automation Coding batch 21 from group 2
+---
 
 ## Automation Testing HADIR WEB
 
-Automation testing project [HADIR WEB](https://magang.dikahadir.com/authentication/login)  using **Intellij IDEA** **Maven** **Java**, **Selenium WebDriver**, **Cucumber BDD**, **TestNG** and **ExtentReports**.
-
+```bash
+Automation testing final project [HADIR WEB](https://magang.dikahadir.com/authentication/login)  using **Intellij IDEA**, **Maven**, **Java**, **Selenium WebDriver**, **Cucumber BDD**, **TestNG** and **ExtentReports**.
+```
 
 ---
 
@@ -17,7 +16,6 @@ Clone this repository to your local machine:
 ```bash
 
 git clone https://github.com/permadigeofani/magang-dika-hadir-permadigeofani.git
-
 
 ```
 
